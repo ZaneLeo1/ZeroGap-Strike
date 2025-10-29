@@ -1,1 +1,15 @@
+binance:
+  enabled: true
+  role: "core"
 
+okx:
+  enabled: true
+  role: "core"
+
+bybit:
+  enabled: true
+  role: "core"
+
+gate:
+  enabled: false
+  role: "optional"
