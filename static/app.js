@@ -16,3 +16,4 @@ async function loadData() {
 }
 setInterval(loadData,1000);
 loadData();
+setInterval(fetchData, 1000); // 每1秒刷新一次
