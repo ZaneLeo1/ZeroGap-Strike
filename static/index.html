@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZeroGap-Strike v4.2 Realtime Monitor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2 id="title">ZeroGap-Strike v4.2 Realtime Monitor</h2>
+
+  <div id="info">
+    <span id="update">—</span>
+    <span id="pairCount"></span>
+  </div>
+
+  <table id="data">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Ex A</th>
+        <th>Ex B</th>
+        <th>Spread A→B %</th>
+        <th>Spread B→A %</th>
+        <th>Net A→B %</th>
+        <th>Net B→A %</th>
+        <th>Z-Score</th>
+        <th>Funding A</th>
+        <th>Funding B</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <footer>
+    <p>Auto-refresh 1 s ｜ Green = Positive Spread ｜ Red = Negative Spread</p >
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

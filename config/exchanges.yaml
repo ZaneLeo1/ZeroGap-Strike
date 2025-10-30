@@ -1,0 +1,18 @@
+poll_interval_ms: 1000     # 采集节拍（毫秒）
+request_timeout_ms: 800    # 单次HTTP超时
+exchanges:
+  binance:
+    enabled: true
+    role: "A"              # 用于UI排序，无强含义
+    taker_fee_bps: 5       # 0.05%
+    maker_fee_bps: 1       # 0.01%
+  okx:
+    enabled: true
+    role: "B"
+    taker_fee_bps: 8
+    maker_fee_bps: 2
+  bybit:
+    enabled: true
+    role: "B"
+    taker_fee_bps: 7
+    maker_fee_bps: 2

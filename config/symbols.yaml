@@ -1,0 +1,2 @@
+perp_symbols: ["BTCUSDT", "ETHUSDT", "SOLUSDT", "DOGEUSDT", "ENAUSDT", "SUIUSDT", "WIFUSDT", "PEPEUSDT"]
+# 仅做永续，适配器里会映射到各所的永续合约名称（如 OKX: BTC-USDT-SWAP）

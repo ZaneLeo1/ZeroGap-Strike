@@ -1,0 +1,39 @@
+body {
+  background: #000;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+}
+h2 {
+  margin: 0.2em 0;
+  color: #00ff66;
+}
+#info {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+th, td {
+  border: 1px solid #00ff66;
+  padding: 4px 6px;
+}
+th {
+  background: #001a00;
+}
+tr:hover {
+  background: #002200;
+}
+.positive { color: #00ff66; }  /* 绿色 */
+.negative { color: #ff3366; }  /* 红色 */
+footer {
+  margin-top: 0.6em;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
