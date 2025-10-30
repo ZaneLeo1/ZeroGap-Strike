@@ -1,48 +1,36 @@
-async function fetchData() {
-  try {
-    const res = await fetch('/api/data');
-    const data = await res.json();
-    renderTable(data);
-  } catch (err) {
-    console.error('数据加载失败:', err);
+// static/app.js
+const TBody = document.querySelector('#data tbody');
+const title = document.querySelector('h2');
+
+function render(items) {
+  TBody.innerHTML = '';
+  for (const it of items) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${it.symbol}</td>
+      <td>${it.exA}</td>
+      <td>${it.exB}</td>
+      <td>${it.spread_pct?.toFixed(4) ?? ''}</td>
+      <td>${it.zscore == null ? '' : it.zscore.toFixed(2)}</td>
+      <td>${it.fundingA ?? ''}</td>
+      <td>${it.fundingB ?? ''}</td>
+    `;
+    TBody.appendChild(tr);
   }
 }
 
-function renderTable(data) {
-  const table = document.getElementById('data-table');
-  if (!table) return;
-
-  table.innerHTML = `
-    <tr>
-      <th>Symbol</th>
-      <th>ExA</th>
-      <th>ExB</th>
-      <th>Spread %</th>
-      <th>Z-Score</th>
-      <th>Funding A</th>
-      <th>Funding B</th>
-    </tr>
-  `;
-
-  data.forEach(row => {
-    const spreadColor = row.spread > 0 ? '#00ff00' : '#ff4444';
-    const zValue = row.zscore !== undefined ? row.zscore.toFixed(3) : '-';
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${row.symbol}</td>
-      <td>${row.exA}</td>
-      <td>${row.exB}</td>
-      <td style="color:${spreadColor};">${row.spread.toFixed(3)}</td>
-      <td>${zValue}</td>
-      <td>${row.fundingA ?? '-'}</td>
-      <td>${row.fundingB ?? '-'}</td>
-    `;
-    table.appendChild(tr);
-  });
+async function tick() {
+  try {
+    const r = await fetch('/api/data');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || 'api error');
+    title.textContent = `ZeroGap-Strike v4.2 Realtime Monitor — ${j.updated}`;
+    render(j.items || []);
+  } catch (e) {
+    title.textContent = `ZeroGap-Strike v4.2 Realtime Monitor — ERROR: ${e.message}`;
+  }
 }
 
-// 初始化时加载一次
-fetchData();
-
-// ✅ 每1秒刷新一次
-setInterval(fetchData, 1000);
+tick();
+setInterval(tick, 1000);
